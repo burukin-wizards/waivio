@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { Checkbox } from 'antd';
 import PropTypes from 'prop-types';
 import '../Manage.less';
-import './CampaingRewardsTable.less';
+import './CampaignRewardsTable.less';
 import ModalWindow from '../../../components/ModalWindow/ModalWindow';
 
-const CampaingRewardsTable = props => {
-  const { intl, campaigns, visibility, setModalVisability } = props;
+const CampaignRewardsTable = props => {
+  const { intl, campaigns, visibility, setModalVisibility } = props;
   const isChecked = campaigns.status === 'active' || campaigns.status === 'payed';
   return (
     <div>
@@ -85,7 +85,7 @@ const CampaingRewardsTable = props => {
               <td>
                 <Checkbox
                   defaultChecked={isChecked}
-                  onChange={e => (e.target.checked ? setModalVisability() : null)}
+                  onChange={e => (e.target.checked ? setModalVisibility() : null)}
                 />
               </td>
               <td>{current.name}</td>
@@ -112,17 +112,17 @@ const CampaingRewardsTable = props => {
   );
 };
 
-CampaingRewardsTable.propTypes = {
+CampaignRewardsTable.propTypes = {
   campaigns: PropTypes.shape(),
   intl: PropTypes.shape(),
   visibility: PropTypes.shape(),
-  setModalVisability: PropTypes.func.isRequired,
+  setModalVisibility: PropTypes.func.isRequired,
 };
 
-CampaingRewardsTable.defaultProps = {
+CampaignRewardsTable.defaultProps = {
   campaigns: {},
   intl: {},
   visibility: {},
 };
 
-export default CampaingRewardsTable;
+export default CampaignRewardsTable;

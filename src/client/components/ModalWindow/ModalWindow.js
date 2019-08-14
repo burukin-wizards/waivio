@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 import { connect } from 'react-redux';
 import { getModalVisability } from '../../reducers';
-import { setModalVisability } from './modalActions';
+import { setModalVisibility } from './modalActions';
 
 @connect(
   state => ({
     visibility: getModalVisability(state),
   }),
-  { setModalVisability },
+  { setModalVisibility },
 )
 class ModalWindow extends React.Component {
   static propTypes = {
     /* from connect */
     visibility: PropTypes.bool,
-    setModalVisability: PropTypes.func.isRequired,
+    setModalVisibility: PropTypes.func.isRequired,
     /* passed props */
     title: PropTypes.string,
     content: PropTypes.shape.isRequired,
@@ -33,14 +33,14 @@ class ModalWindow extends React.Component {
     if (onConfirm) {
       onConfirm();
     }
-    this.props.setModalVisability();
+    this.props.setModalVisibility();
   };
 
   handleCancel = (e, onDisconfirm) => {
     if (onDisconfirm) {
       onDisconfirm();
     }
-    this.props.setModalVisability();
+    this.props.setModalVisibility();
   };
 
   render() {

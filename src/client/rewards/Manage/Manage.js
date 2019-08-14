@@ -5,25 +5,25 @@ import { Link } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
 import './Manage.less';
 import * as ApiClient from '../../../waivioApi/ApiClient';
-import CampaingRewardsTable from './CampaingRewardsTable/CampaingRewardsTable';
+import CampaignRewardsTable from './CampaingRewardsTable/CampaignRewardsTable';
 import BalanceTable from './BalanceTable/BalanceTable';
 
 import { getModalVisability } from '../../reducers';
-import { setModalVisability } from '../../components/ModalWindow/modalActions';
+import { setModalVisibility } from '../../components/ModalWindow/modalActions';
 
 @injectIntl
 @connect(
   state => ({
     visibility: getModalVisability(state),
   }),
-  { setModalVisability },
+  { setModalVisibility },
 )
 class Manage extends React.Component {
   static propTypes = {
     userName: PropTypes.string,
     intl: PropTypes.shape().isRequired,
     visibility: PropTypes.shape().isRequired,
-    setModalVisability: PropTypes.func.isRequired,
+    setModalVisibility: PropTypes.func.isRequired,
   };
   static defaultProps = {
     userName: '',
@@ -110,7 +110,7 @@ class Manage extends React.Component {
 
   render() {
     // eslint-disable-next-line no-shadow
-    const { intl, setModalVisability, visibility } = this.props;
+    const { intl, setModalVisibility, visibility } = this.props;
     const { budgetTotal, campaigns } = this.state;
     const balanceContent = this.balanceContent();
     const rewardsCampaignContent = this.rewardsCampaignContent();
@@ -132,11 +132,11 @@ class Manage extends React.Component {
                 defaultMessage: `Manage rewards campaign`,
               })}
             </div>
-            <CampaingRewardsTable
+            <CampaignRewardsTable
               intl={intl}
               campaigns={campaigns}
               visibility={visibility}
-              setModalVisability={setModalVisability}
+              setModalVisibility={setModalVisibility}
             />
             <div className="Manage__rewards-campaign-wrap-text-content">
               {rewardsCampaignContent}
